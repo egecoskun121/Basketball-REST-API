@@ -1,0 +1,32 @@
+
+type Query{
+    getById(id: ID):Player
+    getPlayersAll:[Player]
+    getTeamById(id: ID):Team
+}
+type Player{
+    id: ID!
+    firstName: String,
+    lastName: String,
+    position: Position
+}
+type Team{
+    id:ID!
+    teamName:String,
+    players:[Player]
+}
+
+enum Position{
+    PG,
+    SG,
+    PF,
+    SF,
+    C
+}
+
+type Mutation{
+    createPlayer(firstName:String,lastName:String,position:Position):Player
+    deletePlayer(id: ID):Boolean
+    addPlayerToTeam(playerId: ID,teamId: ID):Team
+    createTeam(teamName:String):Team
+}
